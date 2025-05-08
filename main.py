@@ -21,8 +21,6 @@ class Product(BaseModel):
 app = FastAPI()
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
     "http://localhost",
     # Default port when running angular
     "http://localhost:4200",
@@ -49,4 +47,5 @@ def get_products():
 
 @app.get("/products/{product_id}")
 def get_product_by_id(product_id: int, q: Union[str, None] = None):
-    return {"product_id": product_id, "q": q}
+    product = get(f"{baseUrl}/product/{product_id}")
+    return product.json()
