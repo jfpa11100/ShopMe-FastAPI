@@ -47,5 +47,5 @@ def get_products():
 
 @app.get("/products/{product_id}")
 def get_product_by_id(product_id: int, q: Union[str, None] = None):
-    product = get(f"{baseUrl}/product/{product_id}")
+    product = get(f"{baseUrl}/products/{product_id}")
     return product.json()
